@@ -43,6 +43,15 @@ def insert_bullying_data(csv_list):
         connect_and_insert(insert_str)
 
 
+def query_absences_table():
+    query_str = """
+    SELECT * FROM absences
+    WHERE demographic_variable = "All Students" AND "year" = "2017-18";
+    """
+
+    return query_str
+
+
 def insert_dbn_data(csv_list):
     header = csv_list[:1][0]
     data = csv_list[1:]
