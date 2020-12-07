@@ -19,6 +19,30 @@ def connect_and_insert(insert_str):
     conn.close()
 
 
+def split_data(csv_list):
+    header = csv_list[:1][0]
+    data = csv_list[1:]
+
+    return (header, data)
+
+
+def insert_bullying_data(csv_list):
+    (header, data) = split_data(csv_list)
+    [dbn_h, school_name_h, complaints_h, material_incidents_h] = header
+
+    for row in data:
+        [dbn_r, school_name_r, complaints_r, material_incidents_r] = row
+
+        insert_str = f"""
+        INSERT INTO bullying
+        ({dbn_h}, {school_name_h}, {complaints_h}, {material_incidents_h})
+        VALUES
+        ("{str(dbn_r)}", "{str(school_name_r)}", "{str(complaints_r)}", "{str(material_incidents_r)}")
+        """
+
+        connect_and_insert(insert_str)
+
+
 def insert_dbn_data(csv_list):
     header = csv_list[:1][0]
     data = csv_list[1:]
@@ -99,6 +123,9 @@ if __name__ == "__main__":
 
     dbn_csv = csv_to_list("./data/2018-DBN-ZIP-COORDINATES.csv")
     insert_dbn_data(dbn_csv)
+
+    bullying_csv = csv_to_list("./data/2017-2018_BULLYING_HARASSMENT.csv")
+    insert_bullying_data(bullying_csv)
 
     abscence_csv = csv_to_list("./data/2017-DATA.csv")
     insert_absence_data(abscence_csv)
