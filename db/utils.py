@@ -1,6 +1,7 @@
 import sqlite3
 import csv
 
+
 def create_tables():
     conn = sqlite3.connect("schools.db")
     sql_file = open("schema.sql")
@@ -11,6 +12,7 @@ def create_tables():
     conn.close()
 
     sql_file.close()
+
 
 def connect_and_insert(insert_str):
     conn = sqlite3.connect("schools.db")
@@ -36,8 +38,17 @@ def split_data(csv_list):
     return (header, data)
 
 
-def transform_to_dict(val_list, key_config):
+def connect_and_query(db_dir, query_str):
+    conn = sqlite3.connect(db_dir)
+    cursor = conn.cursor()
     
-    return [
-        dict(zip(key_config, val_tup)) for val_tup in val_list 
-    ]
+    cursor.execute(query_str)
+    rows = cursor.fetchall()
+    conn.close()
+
+    return rows
+
+
+def transform_to_dict(val_list, key_config):
+
+    return [dict(zip(key_config, val_tup)) for val_tup in val_list]

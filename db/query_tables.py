@@ -1,5 +1,5 @@
 
-def select_bully_table():
+def query_bully_table():
     query_str = """SELECT 
     bullying.*, 
     schools.location, 
@@ -14,7 +14,7 @@ def select_bully_table():
 
 def query_consolidated():
     query_str = """SELECT
-    "consolidated_absences".*,
+    'consolidated_absences'.*,
     bullying.complaints,
     bullying.material_incidents,
     schools.location,
@@ -31,7 +31,7 @@ def query_consolidated():
 
 def query_all():
     query_str = """SELECT
-    "consolidated_absences".*,
+    'consolidated_absences'.*,
     bullying.complaints,
     bullying.material_incidents,
     schools.location,

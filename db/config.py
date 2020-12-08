@@ -1,5 +1,6 @@
 headers = {
-    "all": (
+    "all": [
+        "id",
         "dbn",
         "school_name",
         "grade",
@@ -17,8 +18,9 @@ headers = {
         "location",
         "postal_code",
         "coordinates"
-        ),
-    "abscenses": (
+    ],
+    "absent": [
+        "id",
         "dbn",
         "school_name",
         "grade",
@@ -31,8 +33,9 @@ headers = {
         "percent_attendance",
         "num_chronically_absent",
         "percent_chronically_absent"
-        ),
-    "consoldidated": (
+    ],
+    "consolidated": [
+        "id",
         "dbn",
         "school_name",
         "grade",
@@ -45,17 +48,19 @@ headers = {
         "percent_attendance",
         "num_chronically_absent",
         "percent_chronically_absent"
-        ),
-    "bullying": (
+    ],
+    "bully": [
+        "id",
         "dbn",
         "school_name",
         "complaints",
         "material_incidents"
-    ),
-    "schools": (
+    ],
+    "schools": [
+        "id",
         "dbn",
         "location",
         "postal_code",
         "coordinates"
-    )
+    ]
 }
