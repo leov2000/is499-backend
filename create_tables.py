@@ -44,12 +44,43 @@ def insert_bullying_data(csv_list):
 
 
 def query_absences_table():
+    conn = sqlite3.connect("schools.db")
+    cursor = conn.cursor()
+
     query_str = """
     SELECT * FROM absences
     WHERE demographic_variable = "All Students" AND "year" = "2017-18";
     """
 
-    return query_str
+    cursor.execute(query_str)
+    rows = cursor.fetchall()
+
+    for row in rows:
+        (   id, 
+            dbn_r,
+            school_name_r,
+            grade_r,
+            year_r,
+            demographic_category_r,
+            demographic_variable_r,
+            num_total_days_r,
+            num_days_absent_r,
+            num_days_present_r,
+            percent_attendance_r,
+            num_chronically_absent_r,
+            percent_chronically_absent_r
+        ) = row
+
+        insert_str = f"""
+        INSERT INTO consolidated_absences
+        ({"dbn"}, {"school_name"}, {"grade"}, {"year"}, {"demographic_category"}, {"demographic_variable"}, {"num_total_days"}, {"num_days_absent"}, {"num_days_present"}, {"percent_attendance"}, {"num_chronically_absent"}, {"percent_chronically_absent"})
+        VALUES
+        ("{str(dbn_r)}", "{str(school_name_r)}", "{str(grade_r)}", "{str(year_r)}", "{str(demographic_category_r)}", "{str(demographic_variable_r)}", "{str(num_total_days_r)}", "{str(num_days_absent_r)}", "{str(num_days_present_r)}", "{str(percent_attendance_r)}", "{str(num_chronically_absent_r)}", "{str(percent_chronically_absent_r)}")
+        """
+
+        connect_and_insert(insert_str)
+
+    conn.close()
 
 
 def insert_dbn_data(csv_list):
@@ -138,3 +169,5 @@ if __name__ == "__main__":
 
     abscence_csv = csv_to_list("./data/2017-DATA.csv")
     insert_absence_data(abscence_csv)
+
+    query_absences_table()
