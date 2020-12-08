@@ -34,3 +34,10 @@ def split_data(csv_list):
     data = csv_list[1:]
 
     return (header, data)
+
+
+def transform_to_dict(val_list, key_config):
+    
+    return [
+        dict(zip(key_config, val_tup)) for val_tup in val_list 
+    ]
