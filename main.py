@@ -20,11 +20,6 @@ templates = Jinja2Templates(directory="./template")
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "cache_bust": random.random()})
 
-if __name__ == "__main__":
-    print("its running")
-    uvicorn.run("main:app", host="0.0.0.0", port=PORT, reload=RELOAD, debug=RELOAD)
-
-
 @app.get("/all")
 async def all(request: Request):
     rows = connect_and_query("./db/schools.db", query_all())
@@ -56,3 +51,7 @@ async def consolidated(request: Request):
     result = jsonable_encoder(transform_to_dict(rows,header_dict))
 
     return JSONResponse(content=result)
+
+if __name__ == "__main__":
+    print("its running")
+    uvicorn.run("main:app", host="0.0.0.0", port=PORT, reload=RELOAD, debug=RELOAD)
