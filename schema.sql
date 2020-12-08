@@ -7,6 +7,8 @@ DROP TABLE IF EXISTS absences;
 -- Check and see if the bullying table already exists, if it does, drop it
 DROP TABLE IF EXISTS bullying;
 
+DROP TABLE IF EXISTS consolidated_absences;
+
 -- Create schools table
 CREATE TABLE schools (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -34,6 +36,22 @@ CREATE TABLE absences (
     percent_chronically_absent TEXT NOT NULL
 );
 
+CREATE TABLE consolidated_absences (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    dbn TEXT NOT NULL,
+    school_name TEXT NOT NULL,
+    grade TEXT NOT NULL,
+    "year" TEXT NOT NULL,
+    demographic_category TEXT NOT NULL,
+    demographic_variable TEXT NOT NULL,
+    num_total_days TEXT NOT NULL,
+    num_days_absent TEXT NOT NULL,
+    num_days_present TEXT NOT NULL,
+    percent_attendance TEXT NOT NULL,
+    num_chronically_absent TEXT NOT NULL,
+    percent_chronically_absent TEXT NOT NULL
+);
+
 CREATE TABLE bullying (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     dbn TEXT NOT NULL,
@@ -41,3 +59,4 @@ CREATE TABLE bullying (
     complaints TEXT NOT NULL,
     material_incidents TEXT NOT NULL
 );
+
