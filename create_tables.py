@@ -84,8 +84,7 @@ def query_absences_table():
 
 
 def insert_dbn_data(csv_list):
-    header = csv_list[:1][0]
-    data = csv_list[1:]
+    (header, data) = split_data(csv_list)
     [dbn_h, location_h, postal_code_h, coordinates_h] = header
 
     for row in data:
@@ -102,9 +101,7 @@ def insert_dbn_data(csv_list):
 
 
 def insert_absence_data(csv_list):
-    header = csv_list[:1][0]
-    data = csv_list[1:]
-
+    (header, data) = split_data(csv_list)
     [
         dbn_h,
         school_name_h,
