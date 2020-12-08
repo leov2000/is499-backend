@@ -1,6 +1,6 @@
 
 def select_bully_table():
-    """SELECT 
+    query_str = """SELECT 
     bullying.*, 
     schools.location, 
     schools.postal_code, 
@@ -10,8 +10,10 @@ def select_bully_table():
     ORDER BY id;
     """
 
+    return query_str
+
 def query_consolidated():
-    """SELECT
+    query_str = """SELECT
     "consolidated_absences".*,
     bullying.complaints,
     bullying.material_incidents,
@@ -23,9 +25,12 @@ def query_consolidated():
     LEFT JOIN bullying ON schools.dbn = bullying.dbn
     ORDER by id;
     """
-    
+
+    return query_str
+
+
 def query_all():
-    """SELECT
+    query_str = """SELECT
     "consolidated_absences".*,
     bullying.complaints,
     bullying.material_incidents,
@@ -39,8 +44,10 @@ def query_all():
     ORDER BY id;
     """
 
+    return query_str
+
 def query_absences():
-    """SELECT
+    query_str = """SELECT
     absences.*,
     bullying.complaints,
     bullying.material_incidents,
@@ -53,3 +60,5 @@ def query_absences():
     WHERE schools.location IS NOT NULL
     ORDER BY id;
     """
+
+    return query_str
