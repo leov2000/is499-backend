@@ -35,9 +35,19 @@ def insert_bullying_data(csv_list):
 
         insert_str = f"""
         INSERT INTO bullying
-        ({dbn_h}, {school_name_h}, {complaints_h}, {material_incidents_h})
+        (
+            {dbn_h},
+            {school_name_h},
+            {complaints_h},
+            {material_incidents_h}
+        )
         VALUES
-        ("{str(dbn_r)}", "{str(school_name_r)}", "{str(complaints_r)}", "{str(material_incidents_r)}")
+        (
+            "{str(dbn_r)}",
+            "{str(school_name_r)}",
+            "{str(complaints_r)}",
+            "{str(material_incidents_r)}"
+        )
         """
 
         connect_and_insert(insert_str)
@@ -56,7 +66,8 @@ def query_absences_table():
     rows = cursor.fetchall()
 
     for row in rows:
-        (   id, 
+        (
+            id,
             dbn_r,
             school_name_r,
             grade_r,
@@ -68,14 +79,40 @@ def query_absences_table():
             num_days_present_r,
             percent_attendance_r,
             num_chronically_absent_r,
-            percent_chronically_absent_r
+            percent_chronically_absent_r,
         ) = row
 
         insert_str = f"""
         INSERT INTO consolidated_absences
-        ({"dbn"}, {"school_name"}, {"grade"}, {"year"}, {"demographic_category"}, {"demographic_variable"}, {"num_total_days"}, {"num_days_absent"}, {"num_days_present"}, {"percent_attendance"}, {"num_chronically_absent"}, {"percent_chronically_absent"})
+        (
+            {"dbn"},
+            {"school_name"},
+            {"grade"},
+            {"year"},
+            {"demographic_category"},
+            {"demographic_variable"},
+            {"num_total_days"},
+            {"num_days_absent"},
+            {"num_days_present"},
+            {"percent_attendance"},
+            {"num_chronically_absent"},
+            {"percent_chronically_absent"}
+        )
         VALUES
-        ("{str(dbn_r)}", "{str(school_name_r)}", "{str(grade_r)}", "{str(year_r)}", "{str(demographic_category_r)}", "{str(demographic_variable_r)}", "{str(num_total_days_r)}", "{str(num_days_absent_r)}", "{str(num_days_present_r)}", "{str(percent_attendance_r)}", "{str(num_chronically_absent_r)}", "{str(percent_chronically_absent_r)}")
+        (
+            "{str(dbn_r)}",
+            "{str(school_name_r)}",
+            "{str(grade_r)}",
+            "{str(year_r)}",
+            "{str(demographic_category_r)}",
+            "{str(demographic_variable_r)}",
+            "{str(num_total_days_r)}",
+            "{str(num_days_absent_r)}",
+            "{str(num_days_present_r)}",
+            "{str(percent_attendance_r)}",
+            "{str(num_chronically_absent_r)}",
+            "{str(percent_chronically_absent_r)}"
+        )
         """
 
         connect_and_insert(insert_str)
@@ -92,9 +129,19 @@ def insert_dbn_data(csv_list):
 
         insert_str = f"""
         INSERT INTO schools
-        ({dbn_h}, {location_h}, {postal_code_h}, {coordinates_h})
+        (
+            {dbn_h},
+            {location_h},
+            {postal_code_h},
+            {coordinates_h}
+        )
         VALUES
-        ("{str(dbn_r)}", "{str(location_r)}", "{str(postal_code_r)}", "{str(coordinates_r)}")
+        (
+            "{str(dbn_r)}",
+            "{str(location_r)}",
+            "{str(postal_code_r)}",
+            "{str(coordinates_r)}"
+        )
         """
 
         connect_and_insert(insert_str)
@@ -135,9 +182,35 @@ def insert_absence_data(csv_list):
 
         insert_str = f"""
         INSERT INTO absences
-        ({dbn_h}, {school_name_h}, {grade_h}, {year_h}, {demographic_category_h}, {demographic_variable_h}, {num_total_days_h}, {num_days_absent_h}, {num_days_present_h}, {percent_attendance_h}, {num_chronically_absent_h}, {percent_chronically_absent_h})
+        (
+            {dbn_h},
+            {school_name_h},
+            {grade_h},
+            {year_h},
+            {demographic_category_h},
+            {demographic_variable_h},
+            {num_total_days_h},
+            {num_days_absent_h},
+            {num_days_present_h},
+            {percent_attendance_h},
+            {num_chronically_absent_h},
+            {percent_chronically_absent_h}
+        )
         VALUES
-        ("{str(dbn_r)}", "{str(school_name_r)}", "{str(grade_r)}", "{str(year_r)}", "{str(demographic_category_r)}", "{str(demographic_variable_r)}", "{str(num_total_days_r)}", "{str(num_days_absent_r)}", "{str(num_days_present_r)}", "{str(percent_attendance_r)}", "{str(num_chronically_absent_r)}", "{str(percent_chronically_absent_r)}")
+        (
+            "{str(dbn_r)}",
+            "{str(school_name_r)}",
+            "{str(grade_r)}",
+            "{str(year_r)}",
+            "{str(demographic_category_r)}",
+            "{str(demographic_variable_r)}",
+            "{str(num_total_days_r)}",
+            "{str(num_days_absent_r)}",
+            "{str(num_days_present_r)}",
+            "{str(percent_attendance_r)}",
+            "{str(num_chronically_absent_r)}",
+            "{str(percent_chronically_absent_r)}"
+        )
         """
 
         connect_and_insert(insert_str)
