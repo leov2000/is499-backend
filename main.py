@@ -54,4 +54,3 @@ async def consolidated(request: Request):
 
 if __name__ == "__main__":
     print("its running")
-    uvicorn.run("main:app", host="0.0.0.0", port=PORT, reload=RELOAD, debug=RELOAD)
